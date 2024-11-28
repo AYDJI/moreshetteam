@@ -64,6 +64,8 @@ function displayQuestion() {
         button.onclick = () => checkAnswer(option);
         optionsEl.appendChild(button);
     });
+
+    nextBtn.style.display = "none"; // Hide next button until an answer is selected
 }
 
 // Check Answer
@@ -72,7 +74,7 @@ function checkAnswer(selectedOption) {
     if (selectedOption === currentQuestion.answer) {
         score++;
     }
-    nextBtn.style.display = "inline-block";
+    nextBtn.style.display = "inline-block"; // Show next button after answer is selected
 }
 
 // Next Question
@@ -80,9 +82,9 @@ function nextQuestion() {
     currentQuestionIndex++;
     if (currentQuestionIndex < quizData.length) {
         displayQuestion();
-        nextBtn.style.display = "none";
+        nextBtn.style.display = "none"; // Hide next button until an answer is selected
     } else {
-        showResult();
+        showResult(); // End the quiz
     }
 }
 
@@ -91,7 +93,7 @@ function showResult() {
     questionEl.textContent = "סיימת את החידון!";
     optionsEl.innerHTML = "";
     resultEl.textContent = `ענית נכון על ${score} מתוך ${quizData.length} שאלות.`;
-    nextBtn.style.display = "none";
+    nextBtn.style.display = "none"; // Hide next button after the result
 }
 
 // Initialize Quiz
